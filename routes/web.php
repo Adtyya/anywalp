@@ -8,6 +8,9 @@ use App\Http\Controllers\AddUserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\ChangePasswordController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,5 +60,6 @@ Route::post('/storeUser', [AddUserController::class, ('store')]);
 Route::get('/delete/user/{id}', [AddUserController::class, ('destroy')]);
 
 // Edit User
-Route::get('/setting/{id}', [SettingController::class, ('show')]);
+Route::get('/setting/{id}', [SettingController::class, ('show')])->middleware('auth');
 Route::post('/updateUser/{id}', [SettingController::class, ('update')]);
+Route::get('/setting/changepass/{user:id}', [ChangePasswordController::class, ('index')]);

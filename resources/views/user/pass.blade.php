@@ -11,25 +11,29 @@
               </div>
             @endif
             <div class="col-md">
-                <form action="{{ url('/updateUser/'.$user->id) }}" method="POST">
+                <form action="{{ url('/updateUser/pass/'.$user->id) }}" method="POST">
                     @csrf
                     <div class="col-md-6">
                         <div class="form-group mt-2">
-                            <label for="nama" class="mb-2">Nama</label>
-                            <input type="text" name="name" class="form-control" value="{{$user->name}}"required>
+                            <label for="nama" class="mb-2">Old Password</label>
+                            <input type="text" name="#" class="form-control" required>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group mt-2">
-                            <label for="nama" class="mb-2">Email</label>
-                            <input type="text" name="email" class="form-control" value="{{$user->email}}" required>
+                            <label for="nama" class="mb-2">New password</label>
+                            <input type="text" name="#" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mt-2">
+                            <label for="nama" class="mb-2">Confirm new password</label>
+                            <input type="text" name="#" class="form-control" required>
                         </div>
                     </div>
                     <div class="form-gorup mt-2">
                         <button type="submit" class="btn" style="background-color: #082032;color:white">Simpan perubahan</button>
-                        <a href="{{ url('/setting/changepass/'.$user->id) }}" class="btn" style="background-color: #082032;color: white;">Ganti password</a>
                     </div>
-                    
                     <a href="/">Kembali</a>
                 </form>
             </div>
