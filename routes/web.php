@@ -62,4 +62,5 @@ Route::get('/delete/user/{id}', [AddUserController::class, ('destroy')]);
 // Edit User
 Route::get('/setting/{id}', [SettingController::class, ('show')])->middleware('auth');
 Route::post('/updateUser/{id}', [SettingController::class, ('update')]);
-Route::get('/setting/changepass/{user:id}', [ChangePasswordController::class, ('index')]);
+Route::get('/setting/changepass/{user:id}', [ChangePasswordController::class, ('index')])->middleware('auth');
+Route::post('/updatepass/{id}', [ChangePasswordController::class, ('change')]);

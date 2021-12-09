@@ -38,7 +38,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group mt-2">
-                            <label for="category" class="form-label">Category</label>
+                            <label for="category" class="form-label">Tingkatan</label>
                             <select name="role" class="form-select">
                                 <option value="1">Admin</option>
                                 <option value="0">User</option>
