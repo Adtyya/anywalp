@@ -34,7 +34,7 @@
   </head>
   <h3 >Untuk sementara registrasi akun baru belum tersedia!</h3>
   <body class="text-center">
-{{-- <main class="form-signin">
+<main class="form-signin">
   <form action="/add" method="POST">
     @csrf
     <img class="mb-4" src="img/logo.png" alt="" width="130" height="70">
@@ -47,8 +47,13 @@
     </div>
 
     <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email" required>
+      <input type="email" class="form-control @error('email') is-invalid @enderror" id="floatingInput" placeholder="name@example.com" name="email" required>
       <label for="floatingInput">Email address</label>
+      @error('email')
+          <div class="invalid-feedback">
+            {{ $message }}
+          </div>
+      @enderror
     </div>
     <div class="form-floating">
       <input type="password" class="form-control" id="floatingPassword" placeholder="name@example.com" name="password" required>
@@ -59,7 +64,7 @@
     <a href="/" style="color: #082032;">Kembali ke home</a>
     <p class="mt-5 mb-3 text-muted">&copy; AnyWalp</p>
   </form>
-</main> --}}
+</main>
 
 
     

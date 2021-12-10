@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use DB;
 
 use App\Models\Post;
 use App\Models\Category;
@@ -61,19 +62,24 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'judul' => 'required|unique:posts',
+            'judul' => 'required',
             'foto' => 'image|file|max:2048',
             'deskripsi' => 'required',
-            'category_id' => 'required'
+            'category_id' => 'required',
         ]);
         $slug = Str::slug($request->judul, '-');
-        $data['slug'] = $slug;
+        $post = Post::where('slug', $slug)->first();
+        $curentSlug = $post->slug ?? '';
+        if($curentSlug == $slug){
+            $rand = Str::random(3);
+            $data['slug'] = $slug.'-'.$rand;
+        }else{
+            $data['slug'] = $slug;
+        }
         $name = time().'.'.$request->foto->getClientOriginalExtension();
         $data['foto'] = $name;
         request()->foto->move(public_path('/foto'), $name);
-        // $data['foto'] = $request->file('foto')->store('foto');
         $data['user_id'] = auth()->user()->id;
-        // dd($data);
         Post::create($data);
         return redirect ('/dashboard');
     }

@@ -32,10 +32,10 @@
             @foreach ($data as $post)
                 
             <div class="col-md-6">
-                <div class="card mb-3" style="max-width: 500px;">
+                <div class="card mb-3" style="max-width: 500px; width:100%;">
                     <div class="row g-0">
                         <div class="col-md-8" style="background-color: #082032">
-                            <img src="{{ asset('storage/'.$post->foto) }}" class="img-fluid rounded-end" alt="gambar">
+                            <img src="{{ url('foto/'.$post->foto) }}" class="img-fluid rounded-end" alt="gambar">
                         </div>
                         <div class="col-md-4" style="background-color: #082032">
                             <div class="card-body">

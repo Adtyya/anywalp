@@ -7,9 +7,9 @@
                 <div class="col-md">
                     <div class="text-center mt-5">
                     <h2 class="text-light mb-3"> {{ $detail->judul }} </h2>
-                    <img src="{{ asset('storage/'.$detail->foto) }}" alt="gambar" width="100%" height="auto" class="img-fluid mb-3 rounded">
+                    <img src="{{ url('foto/'.$detail->foto) }}" alt="gambar" width="100%" height="auto" class="img-fluid mb-3 rounded">
                     <div class="mt-5">
-                        <a href="{{ asset('storage/'.$detail->foto) }}" class="btn btn-light mb-2 me-3" download>Download gambar</a>
+                        <a href="{{ url('foto/'.$detail->foto) }}" class="btn btn-light mb-2 me-3" download>Download gambar</a>
                         <a href="/" class="btn btn-light mb-2">Kembali ke home</a>
                     </div>
                     </div>
