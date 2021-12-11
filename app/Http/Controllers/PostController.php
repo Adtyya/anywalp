@@ -126,15 +126,18 @@ class PostController extends Controller
             'deskripsi' => 'required',
             'category_id' => 'required'
         ];
-        $post = $request->validate($rules);
+        $validated = $request->validate($rules);
         if($request->file('foto')) {
             if($request->oldImage){
-                Storage::delete($request->oldImage);
+                $storage = 'foto/'.$request->oldImage;
+                unlink($storage);
             }
-            $post['foto'] = $request->file('foto')->store('post-images');
+            $name = time().'.'.$request->foto->getClientOriginalExtension();
+            $validated['foto'] = $name;
+            request()->foto->move(public_path('/foto'), $name);
         }
-        $post['user_id'] = auth()->user()->id;
-        Post::find($id)->update($post);
+        $validated['user_id'] = auth()->user()->id;
+        Post::find($id)->update($validated);
         return redirect ('/dashboard');
     }
 

@@ -25,7 +25,7 @@
                         <div class="form-group mt-2">
                             <label for="nama" class="mb-3">Foto</label>
                             <input type="hidden" name="oldImage" value="{{ $edit->foto }}">
-                            <img src={{asset('storage/'.$edit->foto)}} class="img-preview img-fluid mb-3 col-sm-5 d-block">
+                            <img src={{url('foto/'.$edit->foto)}} class="img-preview img-fluid mb-3 col-sm-5 d-block">
                             <input type="file" name="foto" class="form-control" onchange="previewImage()" id="image">
                         </div>
                     </div>
